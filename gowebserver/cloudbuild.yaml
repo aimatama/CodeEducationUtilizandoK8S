@@ -1,23 +1,11 @@
 steps:
-
-  # - id: eclint
-  #   name: "e53e225/editorconfig-checker"
-    
-  # - id: go_version
-  #   name: "gcr.io/cloud-builders/go"
-  #   args: ["version"]
-  #   env: ["GOPATH=."]
-    
-  # - id: go_linter
-  #   name: "golangci/golangci-lint"
-  #   args: ["golangci-lint","run"]
-    
-  - id: "Instalação do Go WebServer GCB"
+  
+  - id: "Instalação do Go WebServer Google CB"
     name: 'gcr.io/cloud-builders/go'
     args: ['install', 'app']
     env: ['GOPATH=.']
     
-  - id: 'Executando o do Go Webserver GCB'
+  - id: 'Executando o do Go Webserver Google CB'
     name: 'gcr.io/cloud-builders/go'
     args: ['test', '-v','./...']
     env: ['GOPATH=.']
