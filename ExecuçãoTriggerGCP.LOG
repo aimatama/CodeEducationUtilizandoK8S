@@ -1,0 +1,30 @@
+starting build "5ba247c5-a2cc-4e49-8725-4b9d77ba0bda"
+
+FETCHSOURCE
+Fetching storage object: gs://252261994241.cloudbuild-source.googleusercontent.com/3211ab138fd02587487800504c0264b63683cb36-56c1ed3c-2389-4406-9bc6-bd8c15616285.tar.gz#1585792974426673
+Copying gs://252261994241.cloudbuild-source.googleusercontent.com/3211ab138fd02587487800504c0264b63683cb36-56c1ed3c-2389-4406-9bc6-bd8c15616285.tar.gz#1585792974426673...
+/ [0 files][    0.0 B/  2.6 KiB]                                                
+/ [1 files][  2.6 KiB/  2.6 KiB]                                                
+Operation completed over 1 objects/2.6 KiB.                                      
+BUILD
+Starting Step #0 - "Instalação do Go WebServer GCB"
+Step #0 - "Instalação do Go WebServer GCB": Already have image (with digest): gcr.io/cloud-builders/go
+Step #0 - "Instalação do Go WebServer GCB": Documentation at https://github.com/GoogleCloudPlatform/cloud-builders/blob/master/go/README.md
+Step #0 - "Instalação do Go WebServer GCB": Binaries built using 'go install' will go to "./bin".
+Step #0 - "Instalação do Go WebServer GCB": Running: go install app
+Finished Step #0 - "Instalação do Go WebServer GCB"
+Starting Step #1 - "Executando o do Go Webserver GCB"
+Step #1 - "Executando o do Go Webserver GCB": Already have image (with digest): gcr.io/cloud-builders/go
+Step #1 - "Executando o do Go Webserver GCB": Documentation at https://github.com/GoogleCloudPlatform/cloud-builders/blob/master/go/README.md
+Step #1 - "Executando o do Go Webserver GCB": Running: go test -v ./...
+Step #1 - "Executando o do Go Webserver GCB": === RUN   TestGreeting
+Step #1 - "Executando o do Go Webserver GCB": --- PASS: TestGreeting (0.00s)
+Step #1 - "Executando o do Go Webserver GCB": PASS
+Step #1 - "Executando o do Go Webserver GCB": ok  	_/workspace/gowebserver/src/app	0.003s
+Step #1 - "Executando o do Go Webserver GCB": === RUN   TestGreeting
+Step #1 - "Executando o do Go Webserver GCB": --- PASS: TestGreeting (0.00s)
+Step #1 - "Executando o do Go Webserver GCB": PASS
+Step #1 - "Executando o do Go Webserver GCB": ok  	app	0.003s
+Finished Step #1 - "Executando o do Go Webserver GCB"
+PUSH
+DONE
