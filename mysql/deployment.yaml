@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: utilk8s-mysql-server
+spec: # referente ao Deployment
+    replicas: 1
+    selector: #selector utilizado para criar o service
+        matchLabels:
+            app: utilk8s-mysql-server
+            tier: db
+    template: # referente ao POD
+        metadata:
+            labels:
+                app: utilk8s-mysql-server
+                tier: db
+        spec:
+            containers:
+            - image: mysql:5.7
+              name: utilk8s-mysql-server
+              args:
+                - "--ignore-db-dir=lost+found"
+              env:
+              - name: MYSQL_ROOT_PASSWORD
+                #value: root
+                valueFrom:
+                    secretKeyRef:
+                        name: mysql-pass
+                        key: password
+              ports:
+              - containerPort: 3306
+              volumeMounts: #monta os volumes definidos logo abaixo
+              - name: utilk8s-mysql-persistent-storage
+                mountPath: /var/lib/mysql
+            
+            volumes: # Definição do volume
+            - name: utilk8s-mysql-persistent-storage
+              persistentVolumeClaim:
+                claimName: utilk8s-mysql-pv-claim
+            

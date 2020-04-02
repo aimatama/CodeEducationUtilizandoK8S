@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: utilk8s-go-webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: utilk8s-go-webserver
+  template:
+    metadata:
+      labels:
+        app: utilk8s-go-webserver
+    spec:
+      containers:
+      - name: utilk8s-go-webserver
+        image: aimatama/gowebserver
+        ports:
+        - containerPort: 8000
+        
+

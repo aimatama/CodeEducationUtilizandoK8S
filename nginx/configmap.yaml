@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: utilk8s-nginx-conf
+data:
+  nginx.conf: |
+
+    server {
+      listen 80;
+      index index.php index.html
+      root /usr/share/nginx/html;
+
+    }
+
+  index.html: |
+    <html><head><title>Code Education</title></head>
+    <body>Code.education Rocks!</body>
+    </html>

@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: utilk8s-server-web-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: utilk8s-server-web-nginx
+  template:
+    metadata:
+      labels:
+        app: utilk8s-server-web-nginx
+    spec:
+      containers:
+      - name: utilk8s-nginx
+        image: nginx:1.17-alpine
+        ports:
+        - containerPort: 80
+        
+        # resources:
+        #   requests:
+        #     memory: "100Mi"
+        #     cpu: "200m"
+        #   limits:
+        #     cpu: "250m"
+        #     memory: "200Mi"
+        
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: utilk8s-nginx-conf-vol
+          readOnly: true
+
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: utilk8s-nginx-index-vol
+          readOnly: true
+        # - mountPath: /usr/share/nginx/html/index.php
+        #   name: myfile
+
+      volumes:
+      - name: utilk8s-nginx-conf-vol
+        configMap:
+          name: utilk8s-nginx-conf
+          items:
+            - key: nginx.conf
+              path: nginx.conf
+      
+      - name: utilk8s-nginx-index-vol
+        configMap:
+          name: utilk8s-nginx-conf
+          items:
+            - key: index.html
+              path: index.html
