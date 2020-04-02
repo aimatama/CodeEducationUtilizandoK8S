@@ -12,12 +12,12 @@ steps:
     name: "golangci/golangci-lint"
     args: ["golangci-lint","run"]
     
-  - id: "Instalação do Go WebServer"
+  - id: "Instalação do Go WebServer GCB"
     name: 'gcr.io/cloud-builders/go'
     args: ['install', 'app']
     env: ['GOPATH=.']
     
-  - id: 'Executando o do Go Webserver'
+  - id: 'Executando o do Go Webserver GCB'
     name: 'gcr.io/cloud-builders/go'
     args: ['test', '-v','./...']
     env: ['GOPATH=.']
